@@ -4,6 +4,8 @@ import truck from "../../assets/truck.png"
 import hardware from "../../assets/hardware.png"
 import griptape from "../../assets/griptape.png"
 import exit from "../../assets/exit.svg"
+import texture1 from "../../assets/Metal040_1K_Color1.jpg"
+import texture2 from "../../assets/Texture_Color.jpg"
 import consultation from "../../assets/consultation.svg"
 import './menubar.css'
 import '../action'
@@ -31,20 +33,13 @@ export default function MenuBar() {
     ];
 
     const rough = [
-        './textures/Metal040_1K_Color.jpg',
-        './textures/Metal040_1K_NormalGL.jpg',
-        './textures/Metal040_1K_Roughness.jpg',
-        './textures/Metal040_1K_Metalness.jpg',
+        './textures/Metal040_1K_Color1.jpg',
+        './textures/Metal040_1K_NormalGL1.jpg',
+        './textures/Metal040_1K_Roughness1.jpg',
+        './textures/Metal040_1K_Metalness1.jpg',
     ];
 
-    const beatup = [
-        './textures/Metal021_1K_Color.jpg',
-        './textures/Metal021_1K_NormalGL.jpg',
-        './textures/Metal021_1K_Roughness.jpg',
-        './textures/Metal021_1K_Metalness.jpg',
-    ];
-
-    const [currentColor, setCurrentColor] = useState(green);
+    const [currentColor, setCurrentColor] = useState(false);
     const [currentTexture, setCurrentTexture] = useState(smooth);
 
     const handleColorChange = (event, color) => {
@@ -70,8 +65,6 @@ export default function MenuBar() {
             setCurrentTexture(smooth);
         } else if (texture === 'rough') {
             setCurrentTexture(rough);
-        } else if (texture === 'beatup') {
-            setCurrentTexture(beatup);
         }
     };
 
@@ -133,14 +126,7 @@ export default function MenuBar() {
                     <div className="models">
                         <div className="card">
                             <a onClick={event => handleTextureChange(event, 'rough')} href="#">
-                                <Canvas dpr={[1, 2]} camera={{ fov: 50 }} flat linear>
-                                    <color attach="background" args={['#eee']} />
-                                    <Suspense fallback={null}>
-                                        <Scene currentColor={currentColor} />
-                                    </Suspense>
-                                    <OrbitControls autoRotate enableZoom={true} enablePan={true} />
-                                </Canvas>
-
+                                <img src={texture1} alt="" style={{"width": "100%", "height": "100%"}} />
                             </a>
                             <h2>SPLA Texture1 deck</h2>
                             <p>Deck length:
@@ -167,13 +153,7 @@ export default function MenuBar() {
                         </div>
                         <div className="card">
                             <a onClick={event => handleTextureChange(event, 'smooth')} href="#">
-                                <Canvas dpr={[1, 2]} camera={{ fov: 50 }} flat linear>
-                                    <color attach="background" args={['#eee']} />
-                                    <Suspense fallback={null}>
-                                        <Scene0 currentColor={currentColor} />
-                                    </Suspense>
-                                    <OrbitControls autoRotate enableZoom={true} enablePan={true} />
-                                </Canvas>
+                                <img src={texture2} alt="" style={{"width": "100%", "height": "100%"}} />
                             </a>
                             <h2>SPLA Texture2 deck</h2>
                             <p>Deck length:
@@ -205,7 +185,7 @@ export default function MenuBar() {
                                 <Canvas dpr={[1, 2]} camera={{ fov: 50 }} flat linear>
                                     <color attach="background" args={['#eee']} />
                                     <Suspense fallback={null}>
-                                        <Scene0 currentColor={currentColor} />
+                                        <Scene />
                                     </Suspense>
                                     <OrbitControls autoRotate enableZoom={true} enablePan={true} />
                                 </Canvas>
@@ -238,7 +218,7 @@ export default function MenuBar() {
                                 <Canvas dpr={[1, 2]} camera={{ fov: 50 }} flat linear>
                                     <color attach="background" args={['#eee']} />
                                     <Suspense fallback={null}>
-                                        <Scene0 currentColor={currentColor} />
+                                        <Scene0 />
                                     </Suspense>
                                     <OrbitControls autoRotate enableZoom={true} enablePan={true} />
                                 </Canvas>
