@@ -174,7 +174,7 @@ export default function MenuBar() {
                                     <OrbitControls autoRotate enableZoom={true} enablePan={true} />
                                 </Canvas>
                             </a>
-                            <h2>SPLA Blue deck</h2>
+                            <h2>SPLA Purple deck</h2>
                             <p>Deck length:
                                 <select>
                                     <option>34"</option>
