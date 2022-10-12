@@ -1,13 +1,21 @@
-import { Stage } from "@react-three/drei";
+import { Stage, useTexture } from "@react-three/drei";
 import { Board } from "./Board";
 import { Wheel } from "./Wheel";
 import { Truck } from "./Truck";
 
-export const Scene1 = ({currentColor}) => {
+export const Scene1 = ({ currentColor, currentTexture }) => {
+    const [colorMap, normalMap, roughnessMap, metalnessMap] = useTexture(currentTexture);
     return (
-        <Stage adjustCamera intensity={1}>
+        <Stage intensity={1} >
             <mesh>
-                <Board currentColor={currentColor} />
+                <Board
+                    map={colorMap}
+                    normalMap={normalMap}
+                    roughnessMap={roughnessMap}
+                    metalnessMap={metalnessMap}
+                    currentColor={currentColor}
+                    currentTexture={currentTexture}
+                />
             </mesh>
             <mesh>
                 <Wheel />

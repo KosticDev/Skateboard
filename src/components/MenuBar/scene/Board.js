@@ -1,18 +1,22 @@
 import { useGLTF } from "@react-three/drei"
 import { useLayoutEffect } from "react";
 
-export const Board = ({currentColor}) => {
-    
-    const txt = "Material_0"
-    const { scene , materials} = useGLTF('/board.glb');
-    console.log("board======>", materials)
+export const Board = ({ currentColor, currentTexture, colorMap, normalMap, roughnessMap, metalnessMap }) => {
 
-    useLayoutEffect(() => {
-        Object.assign(materials[txt], { 
-          color: currentColor})
-      }, [scene, materials, currentColor]);
-    
+  const { scene, materials } = useGLTF('/submarine.gltf');
+  console.log("materials======>", materials)
 
-    return <primitive object={scene} />
+  useLayoutEffect(() => {
+    Object.assign(materials.Material, {
+      metalnessMap: metalnessMap,
+      normalMap: normalMap,
+      roughnessMap: roughnessMap,
+      map: colorMap,
+      color: currentColor
+      })
+  }, [scene, materials, currentColor, currentTexture, colorMap, normalMap, roughnessMap, metalnessMap ]);
+
+
+  return <primitive object={scene} />
 
 }

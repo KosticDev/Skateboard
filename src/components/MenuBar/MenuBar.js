@@ -19,11 +19,32 @@ export default function MenuBar() {
 
     const red = new THREE.Color("#dc143c");
     const yellow = new THREE.Color("#ffff00");
-    const white = new THREE.Color("#ffffff");
     const Purple = new THREE.Color("Purple");
     const green = new THREE.Color("green");
 
-    const [currentColor, setCurrentColor] = useState(white);
+    const smooth = [
+        './textures/Metal030_1K_Color.jpg',
+        './textures/Metal030_1K_NormalGL.jpg',
+        './textures/Metal030_1K_Roughness.jpg',
+        './textures/Metal030_1K_Metalness.jpg',
+    ];
+
+    const rough = [
+        './textures/Metal040_1K_Color.jpg',
+        './textures/Metal040_1K_NormalGL.jpg',
+        './textures/Metal040_1K_Roughness.jpg',
+        './textures/Metal040_1K_Metalness.jpg',
+    ];
+
+    const beatup = [
+        './textures/Metal021_1K_Color.jpg',
+        './textures/Metal021_1K_NormalGL.jpg',
+        './textures/Metal021_1K_Roughness.jpg',
+        './textures/Metal021_1K_Metalness.jpg',
+    ];
+
+    const [currentColor, setCurrentColor] = useState(green);
+    const [currentTexture, setCurrentTexture] = useState(smooth);
 
     const handleColorChange = (event, color) => {
         console.log(color);
@@ -36,6 +57,18 @@ export default function MenuBar() {
             setCurrentColor(Purple);
         } else if (color == 'green') {
             setCurrentColor(green);
+        }
+    };
+
+    const handleTextureChange = (event, texture) => {
+        console.log("hi", texture)
+        event.preventDefault();
+        if (texture === 'smooth') {
+            setCurrentTexture(smooth);
+        } else if (texture === 'rough') {
+            setCurrentTexture(rough);
+        } else if (texture === 'beatup') {
+            setCurrentTexture(beatup);
         }
     };
 
@@ -96,7 +129,7 @@ export default function MenuBar() {
                 <div id="card_board" className="content">
                     <div className="models">
                         <div className="card">
-                            <a onClick={event => handleColorChange(event, 'yellow')} href="#">
+                            <a onClick={event => handleTextureChange(event, 'rough')} href="#">
                                 <Canvas dpr={[1, 2]} camera={{ fov: 50 }} flat linear>
                                     <color attach="background" args={['#eee']} />
                                     <Suspense fallback={null}>
@@ -130,7 +163,7 @@ export default function MenuBar() {
                             <p className="addbtn"><strong>Add to&nbsp;Model &nbsp;</strong> +</p>
                         </div>
                         <div className="card">
-                            <a onClick={event => handleColorChange(event, 'green')} href="#">
+                            <a onClick={event => handleTextureChange(event, 'smooth')} href="#">
                                 <Canvas dpr={[1, 2]} camera={{ fov: 50 }} flat linear>
                                     <color attach="background" args={['#eee']} />
                                     <Suspense fallback={null}>
@@ -165,7 +198,7 @@ export default function MenuBar() {
                     </div>
                     <div className="models">
                         <div className="card">
-                            <a onClick={event => handleColorChange(event, 'Purple')} href="#">
+                            <a onClick={event => handleTextureChange(event, 'beatup')} href="#">
                                 <Canvas dpr={[1, 2]} camera={{ fov: 50 }} flat linear>
                                     <color attach="background" args={['#eee']} />
                                     <Suspense fallback={null}>
@@ -341,7 +374,7 @@ export default function MenuBar() {
                 <Canvas dpr={[1, 2]} camera={{ fov: 50 }} flat linear>
                     <color attach="background" args={['#aaa']} />
                     <Suspense fallback={null}>
-                        <Scene1 currentColor={currentColor} />
+                        <Scene1 currentTexture={currentTexture} currentColor={currentColor} />
                     </Suspense>
                     <OrbitControls autoRotate enableZoom={true} enablePan={true} />
                 </Canvas>
