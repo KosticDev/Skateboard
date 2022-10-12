@@ -21,12 +21,13 @@ export default function MenuBar() {
     const yellow = new THREE.Color("#ffff00");
     const Purple = new THREE.Color("Purple");
     const green = new THREE.Color("green");
+    const white = new THREE.Color("#ffffff");
 
     const smooth = [
-        './textures/Metal030_1K_Color.jpg',
-        './textures/Metal030_1K_NormalGL.jpg',
-        './textures/Metal030_1K_Roughness.jpg',
-        './textures/Metal030_1K_Metalness.jpg',
+        './textures/Texture_Color.jpg',
+        './textures/Texture_NormalGL.jpg',
+        './textures/Texture_Roughness.jpg',
+        './textures/Texture_Metalness.jpg',
     ];
 
     const rough = [
@@ -57,6 +58,8 @@ export default function MenuBar() {
             setCurrentColor(Purple);
         } else if (color == 'green') {
             setCurrentColor(green);
+        } else if (color == 'white') {
+            setCurrentColor(white);
         }
     };
 
@@ -139,7 +142,7 @@ export default function MenuBar() {
                                 </Canvas>
 
                             </a>
-                            <h2>SPLA Yellow deck</h2>
+                            <h2>SPLA Texture1 deck</h2>
                             <p>Deck length:
                                 <select>
                                     <option>34"</option>
@@ -172,7 +175,7 @@ export default function MenuBar() {
                                     <OrbitControls autoRotate enableZoom={true} enablePan={true} />
                                 </Canvas>
                             </a>
-                            <h2>SPLA Green deck</h2>
+                            <h2>SPLA Texture2 deck</h2>
                             <p>Deck length:
                                 <select>
                                     <option>34"</option>
@@ -198,7 +201,7 @@ export default function MenuBar() {
                     </div>
                     <div className="models">
                         <div className="card">
-                            <a onClick={event => handleTextureChange(event, 'beatup')} href="#">
+                            <a onClick={event => handleColorChange(event, 'yellow')} href="#">
                                 <Canvas dpr={[1, 2]} camera={{ fov: 50 }} flat linear>
                                     <color attach="background" args={['#eee']} />
                                     <Suspense fallback={null}>
