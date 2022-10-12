@@ -20,7 +20,7 @@ export default function MenuBar() {
     const red = new THREE.Color("#dc143c");
     const yellow = new THREE.Color("#ffff00");
     const white = new THREE.Color("#ffffff");
-    const blue = new THREE.Color("blue");
+    const Purple = new THREE.Color("Purple");
     const green = new THREE.Color("green");
 
     const [currentColor, setCurrentColor] = useState(white);
@@ -32,8 +32,8 @@ export default function MenuBar() {
             setCurrentColor(red);
         } else if (color == 'yellow') {
             setCurrentColor(yellow);
-        } else if (color == 'blue') {
-            setCurrentColor(blue);
+        } else if (color == 'Purple') {
+            setCurrentColor(Purple);
         } else if (color == 'green') {
             setCurrentColor(green);
         }
@@ -165,7 +165,7 @@ export default function MenuBar() {
                     </div>
                     <div className="models">
                         <div className="card">
-                            <a onClick={event => handleColorChange(event, 'blue')} href="#">
+                            <a onClick={event => handleColorChange(event, 'Purple')} href="#">
                                 <Canvas dpr={[1, 2]} camera={{ fov: 50 }} flat linear>
                                     <color attach="background" args={['#eee']} />
                                     <Suspense fallback={null}>

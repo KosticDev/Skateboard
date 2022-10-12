@@ -3,8 +3,9 @@ import { useLayoutEffect } from "react";
 
 export const Board = ({currentColor}) => {
     
-    const txt = "Skateboard.004"
+    const txt = "Material_0"
     const { scene , materials} = useGLTF('/board.glb');
+    console.log("board======>", materials)
 
     useLayoutEffect(() => {
         Object.assign(materials[txt], { 
